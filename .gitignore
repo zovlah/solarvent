@@ -1,3 +1,9 @@
+#Eclipse
+.project
+.pydevproject
+eclipse_pref.epf
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -52,6 +58,9 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
+solarvent_db/settings.py
+
+
 
 # Flask stuff:
 instance/
