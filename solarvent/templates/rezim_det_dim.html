@@ -34,21 +34,21 @@
     {% for rezim in rezim_list %}
       <tr>
         <td>{{rezim.brzina}}</td>
-        <td>{{rezim.voda_ulaz}}</td>
-        <td>{{rezim.voda_izlaz}}</td>
-        <td>{{rezim.voda_protok}}</td>
-        <td>{{rezim.voda_pad_tlaka}}</td>
-        <td>{{rezim.zrak_izlaz}}</td>
-        <td>{{rezim.zrak_protok}}</td>
+        <td>{{rezim.voda_ulaz.normalize}}</td>
+        <td>{{rezim.voda_izlaz.normalize}}</td>
+        <td>{{rezim.voda_protok.normalize}}</td>
+        <td>{{rezim.voda_pad_tlaka.normalize}}</td>
+        <td>{{rezim.zrak_izlaz.normalize}}</td>
+        <td>{{rezim.zrak_protok.normalize}}</td>
         {% if 'Hlađenje' in rezim_list.0.proizvod_rezim.rezim_opis or 'hlađenje' in rezim_list.0.proizvod_rezim.rezim_opis %}
-          <td>{{rezim.rash_ucin}}</td>
-          <td>{{rezim.osjetni_ucin}}</td>
+          <td>{{rezim.rash_ucin.normalize}}</td>
+          <td>{{rezim.osjetni_ucin.normalize}}</td>
         {% else %}
-          <td>{{rezim.ucin_grijanja}}</td>
+          <td>{{rezim.ucin_grijanja.normalize}}</td>
         {% endif %}
-        <td>{{rezim.zvucni_tlak}}</td>
-        <td>{{rezim.zvucna_snaga}}</td>
-        <td>{{rezim.el_snaga}}</td>
+        <td>{{rezim.zvucni_tlak.normalize}}</td>
+        <td>{{rezim.zvucna_snaga.normalize}}</td>
+        <td>{{rezim.el_snaga.normalize}}</td>
       </tr>  
     {% endfor %}  
  </tbody>
@@ -69,11 +69,11 @@
   </thead>
   <tbody>
     <tr>
-      <td>{{dimenzije.tezina}}</td>
-      <td>{{dimenzije.duzina}}</td>
-      <td>{{dimenzije.sirina}}</td>
-      <td>{{dimenzije.visina}}</td>
-      <td>{{dimenzije.max_snaga}}</td>
+      <td>{{dimenzije.tezina.normalize}}</td>
+      <td>{{dimenzije.duzina.normalize}}</td>
+      <td>{{dimenzije.sirina.normalize}}</td>
+      <td>{{dimenzije.visina.normalize}}</td>
+      <td>{{dimenzije.max_snaga.normalize}}</td>
     </tr>    
  </tbody>
 </table>
