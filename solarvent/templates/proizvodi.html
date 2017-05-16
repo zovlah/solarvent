@@ -1,0 +1,17 @@
+<table>
+  <thead>
+    <tr>
+      <th>Naziv proizvoda</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for proizvod in proizvodi_list %}
+      <tr>
+        <td>
+          <a href="{% url 'proizvod_opis' proizvod.id %} ">{{ proizvod.proizvod }}</a>
+
+        </td>
+      </tr>  
+    {% endfor %}  
+ </tbody>
+</table>

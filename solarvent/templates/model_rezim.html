@@ -1,0 +1,22 @@
+<p>Proizvod: {{rezim_list.0.proizvod_model.proizvod_opis.proizvod_main.proizvod}}</p>
+<p>Proizvođač: {{rezim_list.0.proizvod_model.proizvod_opis.proizvodjac.naziv}}</p>
+<p>Model: {{rezim_list.0.proizvod_model.proizvod_opis.model}}</p>
+<p>Tip: {{rezim_list.0.proizvod_model.model_detalj}}</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Režimi</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for rezim in rezim_list %}
+      <tr>
+        <td>
+          <a href="{% url 'rezim_det_dim' rezim.id %} ">{{ rezim.rezim_opis }}</a>
+
+        </td>
+      </tr>  
+    {% endfor %}  
+ </tbody>
+</table>

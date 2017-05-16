@@ -1,0 +1,21 @@
+<p>Proizvod: {{proizvod_list.0.proizvod_opis.proizvod_main.proizvod}}</p>
+<p>Proizvođač: {{proizvod_list.0.proizvod_opis.proizvodjac.naziv}}</p>
+<p>Model: {{proizvod_list.0.proizvod_opis.model}}</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for proizvod in proizvod_list %}
+      <tr>
+        <td>
+          <a href="{% url 'model_rezim' proizvod.id %} ">{{ proizvod.model_detalj }}</a>
+
+        </td>
+      </tr>  
+    {% endfor %}  
+ </tbody>
+</table>

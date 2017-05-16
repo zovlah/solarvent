@@ -1,0 +1,5 @@
+import os, sys
+sys.path.append('D:\projects\luka\solarvent_db')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "solarvent_db.settings")
+import django
+django.setup()

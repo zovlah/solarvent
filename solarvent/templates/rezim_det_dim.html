@@ -1,0 +1,85 @@
+{% load verbose_name_tags %}
+
+<p>Proizvod: {{rezim_list.0.proizvod_rezim.proizvod_model.proizvod_opis.proizvod_main.proizvod}}</p>
+<p>Proizvođač: {{rezim_list.0.proizvod_rezim.proizvod_model.proizvod_opis.proizvodjac.naziv}}</p>
+<p>Model: {{rezim_list.0.proizvod_rezim.proizvod_model.proizvod_opis.model}}</p>
+<p>Tip: {{rezim_list.0.proizvod_rezim.proizvod_model.model_detalj}}</p>
+<p>Režim: {{rezim_list.0.proizvod_rezim.rezim_opis}}</p>
+<p>Režim ID: {{rezim_list.0.proizvod_rezim.id}}</p>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Brzina</th>
+      <th>Voda ulaz <br>{{ rezim_list|queryset_field_verbose_name:"voda_ulaz" }}</th>
+      <th>Voda izlaz <br>{{ rezim_list|queryset_field_verbose_name:"voda_izlaz" }}</th>
+      <th>Voda protok <br>{{ rezim_list|queryset_field_verbose_name:"voda_protok" }}</th>
+      <th>Voda pad tlaka <br>{{ rezim_list|queryset_field_verbose_name:"voda_pad_tlaka" }}</th>
+      <th>Zrak izlaz <br>{{ rezim_list|queryset_field_verbose_name:"zrak_izlaz" }}</th>
+      <th>Zrak protok <br>{{ rezim_list|queryset_field_verbose_name:"zrak_protok" }}</th>
+      {% if 'Hlađenje' in rezim_list.0.proizvod_rezim.rezim_opis or 'hlađenje' in rezim_list.0.proizvod_rezim.rezim_opis %}
+        <th>Rashladni učin <br>{{ rezim_list|queryset_field_verbose_name:"rash_ucin" }}</th>
+        <th>Osjetni učin<br>{{ rezim_list|queryset_field_verbose_name:"osjetni_ucin" }}</th>
+      {% else %}
+        <th>Učin grijanja <br>{{ rezim_list|queryset_field_verbose_name:"ucin_grijanja" }}</th>
+      {% endif %}
+      <th>Zvučni tlak<br>{{ rezim_list|queryset_field_verbose_name:"zvucni_tlak" }}</th>
+      <th>Zvučna snaga <br>{{ rezim_list|queryset_field_verbose_name:"zvucna_snaga" }}</th>
+      <th>Električna snaga <br>{{ rezim_list|queryset_field_verbose_name:"el_snaga" }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for rezim in rezim_list %}
+      <tr>
+        <td>{{rezim.brzina}}</td>
+        <td>{{rezim.voda_ulaz}}</td>
+        <td>{{rezim.voda_izlaz}}</td>
+        <td>{{rezim.voda_protok}}</td>
+        <td>{{rezim.voda_pad_tlaka}}</td>
+        <td>{{rezim.zrak_izlaz}}</td>
+        <td>{{rezim.zrak_protok}}</td>
+        {% if 'Hlađenje' in rezim_list.0.proizvod_rezim.rezim_opis or 'hlađenje' in rezim_list.0.proizvod_rezim.rezim_opis %}
+          <td>{{rezim.rash_ucin}}</td>
+          <td>{{rezim.osjetni_ucin}}</td>
+        {% else %}
+          <td>{{rezim.ucin_grijanja}}</td>
+        {% endif %}
+        <td>{{rezim.zvucni_tlak}}</td>
+        <td>{{rezim.zvucna_snaga}}</td>
+        <td>{{rezim.el_snaga}}</td>
+      </tr>  
+    {% endfor %}  
+ </tbody>
+</table>
+<br>
+<br>
+<p>Dimenzije:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Težina<br>{{ dimenzije|field_verbose_name:"tezina" }}</th>
+      <th>Dužina <br>{{ dimenzije|field_verbose_name:"duzina" }}</th>
+      <th>Širina <br>{{ dimenzije|field_verbose_name:"sirina" }}</th>
+      <th>Visina <br>{{ dimenzije|field_verbose_name:"visina" }}</th>
+      <th>Maksimalna snaga <br>{{ dimenzije|field_verbose_name:"max_snaga" }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{dimenzije.tezina}}</td>
+      <td>{{dimenzije.duzina}}</td>
+      <td>{{dimenzije.sirina}}</td>
+      <td>{{dimenzije.visina}}</td>
+      <td>{{dimenzije.max_snaga}}</td>
+    </tr>    
+ </tbody>
+</table>
+<br>
+<br>
+<a href="{% url 'csv_generator_dot' rezim_list.0.proizvod_rezim.id %} ">Generiraj CSV s decimalnom točkom</a>
+<br>
+<br>
+<a href="{% url 'csv_generator_coma' rezim_list.0.proizvod_rezim.id %} ">Generiraj CSV s decimalnim zarezom</a>
